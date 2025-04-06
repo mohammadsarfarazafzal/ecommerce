@@ -144,6 +144,21 @@ mysql> SELECT * FROM orderdetails;
 ```
 ![image](https://github.com/user-attachments/assets/0a843643-127c-41b5-b09c-d6708f392284)
 
+### Read Operation
+
+```
+Hibernate: select od1_0.detailsId,od1_0.orderId,od1_0.productId,od1_0.quantity,od1_0.unitPrice from orderdetails od1_0
+Hibernate: select o1_0.orderId,o1_0.orderDate,o1_0.totalAmount,u1_0.userId,u1_0.email,u1_0.password,u1_0.role,u1_0.username from orders o1_0 left join users u1_0 on u1_0.userId=o1_0.userId where o1_0.orderId=?
+Hibernate: select p1_0.productId,c1_0.categoryId,c1_0.categoryDescription,c1_0.categoryName,p1_0.productName,p1_0.price,p1_0.stockQuantity from product p1_0 left join category c1_0 on c1_0.categoryId=p1_0.categoryId where p1_0.productId=?
+Hibernate: select p1_0.productId,c1_0.categoryId,c1_0.categoryDescription,c1_0.categoryName,p1_0.productName,p1_0.price,p1_0.stockQuantity from product p1_0 left join category c1_0 on c1_0.categoryId=p1_0.categoryId where p1_0.productId=?
+Hibernate: select o1_0.orderId,o1_0.orderDate,o1_0.totalAmount,u1_0.userId,u1_0.email,u1_0.password,u1_0.role,u1_0.username from orders o1_0 left join users u1_0 on u1_0.userId=o1_0.userId where o1_0.orderId=?
+Hibernate: select p1_0.productId,c1_0.categoryId,c1_0.categoryDescription,c1_0.categoryName,p1_0.productName,p1_0.price,p1_0.stockQuantity from product p1_0 left join category c1_0 on c1_0.categoryId=p1_0.categoryId where p1_0.productId=?
+Hibernate: select p1_0.productId,c1_0.categoryId,c1_0.categoryDescription,c1_0.categoryName,p1_0.productName,p1_0.price,p1_0.stockQuantity from product p1_0 left join category c1_0 on c1_0.categoryId=p1_0.categoryId where p1_0.productId=?
+OrderDetails [order = Orders [id=1, orderDate=2025-04-06T22:41:16.561572, totalAmount=0.0, user=User [id=1, username=nahid, password=xzist123, email=nahid@google.com, role=CUSTOMER], orderDetails=], user = User [id=1, username=nahid, password=xzist123, email=nahid@google.com, role=CUSTOMER], product = Product [id=1, name=Paracetamol, price=10.99, stockQuantity=150, category=Category [id=1, name=Medicine, description=]]]
+OrderDetails [order = Orders [id=1, orderDate=2025-04-06T22:41:16.561572, totalAmount=0.0, user=User [id=1, username=nahid, password=xzist123, email=nahid@google.com, role=CUSTOMER], orderDetails=], user = User [id=1, username=nahid, password=xzist123, email=nahid@google.com, role=CUSTOMER], product = Product [id=2, name=Calpol, price=11.99, stockQuantity=150, category=Category [id=1, name=Medicine, description=]]]
+OrderDetails [order = Orders [id=2, orderDate=2025-04-06T23:00:25.949788, totalAmount=19981.97, user=User [id=5, username=nishant, password=nbhadani123, email=nishant@google.com, role=CUSTOMER], orderDetails=], user = User [id=5, username=nishant, password=nbhadani123, email=nishant@google.com, role=CUSTOMER], product = Product [id=6, name=Black Hoody, price=3990.99, stockQuantity=15, category=Category [id=4, name=Fashion, description=Trending Fashion]]]
+OrderDetails [order = Orders [id=2, orderDate=2025-04-06T23:00:25.949788, totalAmount=19981.97, user=User [id=5, username=nishant, password=nbhadani123, email=nishant@google.com, role=CUSTOMER], orderDetails=], user = User [id=5, username=nishant, password=nbhadani123, email=nishant@google.com, role=CUSTOMER], product = Product [id=7, name=White Blazer, price=11999.99, stockQuantity=19, category=Category [id=4, name=Fashion, description=Trending Fashion]]]
+```
 
 ## License
 

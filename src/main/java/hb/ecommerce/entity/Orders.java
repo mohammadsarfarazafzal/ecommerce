@@ -1,7 +1,9 @@
 package hb.ecommerce.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -35,9 +38,10 @@ public class Orders {
 	
 	// required relationship with users, i.e. ManyToOne
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="userId")
 	private Users user;
+	
 	
 	// default constructor
 	
@@ -119,7 +123,8 @@ public class Orders {
 	
 	@Override
 	public String toString() {
-		return "Orders [id=" + id + ", orderDate=" + orderDate + ", totalAmount=" + totalAmount + ", user=" + user + "]";
+		return "Orders [id=" + id + ", orderDate=" + orderDate + ", totalAmount=" + totalAmount + ", user=" + user
+				+ ", orderDetails=" + "]";
 	}
 	
 }

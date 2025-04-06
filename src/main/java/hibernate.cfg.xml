@@ -5,7 +5,7 @@
     <session-factory>
         <!-- Database settings -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ecommerce</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3307/ecommerce</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">I@mSARFARAZ#1</property>
         <property name="connection.pool_size">1</property>

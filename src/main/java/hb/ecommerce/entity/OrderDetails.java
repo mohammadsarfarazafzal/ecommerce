@@ -1,5 +1,6 @@
 package hb.ecommerce.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,15 +32,15 @@ public class OrderDetails {
 	@Column(name="unitPrice", nullable=false)
 	private double unitPrice;
 	
-	// required relationship with users, i.e. ManyToOne
+	// required relationship with orders, i.e. ManyToOne
 	
-	@ManyToOne
-	@JoinColumn(name="userId")
-	private Users user;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="orderId")
+	private Orders order;
 	
 	// required relationship with product, i.e. ManyToOne
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="productId")
 	private Product product;
 	
@@ -49,17 +50,17 @@ public class OrderDetails {
         this.id = 0;
         this.quantity = 0;
         this.unitPrice = 0;
-        this.user = null;
+        this.order = null;
         this.product = null;
     }
 
 	// parameterized constructor
     
-	public OrderDetails(int quantity, double unitPrice, Users user, Product product) {
+	public OrderDetails(int quantity, double unitPrice, Orders order, Product product) {
 		super();
 		this.quantity = quantity;
 		this.unitPrice = unitPrice;
-		this.user = user;
+		this.order = order;
 		this.product = product;
 	}
 
@@ -108,17 +109,17 @@ public class OrderDetails {
 	}
 
 	/**
-	 * @return the user
+	 * @return the order
 	 */
-	public Users getUser() {
-		return user;
+	public Orders getOrder() {
+		return order;
 	}
 
 	/**
-	 * @param user the user to set
+	 * @param order the order to set
 	 */
-	public void setUser(Users user) {
-		this.user = user;
+	public void setOrder(Orders order) {
+		this.order = order;
 	}
 
 	/**
@@ -139,8 +140,7 @@ public class OrderDetails {
 	
 	@Override
 	public String toString() {
-		return "OrderDetails [id=" + id + ", quantity=" + quantity + ", unitPrice=" + unitPrice + ", user=" + user
-				+ ", product=" + product + "]";
+		return "OrderDetails [order = " + order+ ", user = "+ order.getUser() + ", product = "+product+ "]";
 	}
 	
 }
